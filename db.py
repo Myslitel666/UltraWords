@@ -50,14 +50,12 @@ def create_tables():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             value TEXT NOT NULL,
             typeId INTEGER NOT NULL,
-            link TEXT,
             partOfSpeechId INTEGER,
             isDeclinable BOOLEAN,
-            genderId INTEGER,
+            link TEXT,
             UNIQUE(value, typeId),
             FOREIGN KEY (typeId) REFERENCES Types(id) ON DELETE CASCADE,
-            FOREIGN KEY (partOfSpeechId) REFERENCES PartsOfSpeech(id) ON DELETE SET NULL,
-            FOREIGN KEY (genderId) REFERENCES Genders(id) ON DELETE SET NULL
+            FOREIGN KEY (partOfSpeechId) REFERENCES PartsOfSpeech(id) ON DELETE SET NULL
         )
     ''')
     
@@ -69,8 +67,10 @@ def create_tables():
             caseId INTEGER NOT NULL,
             value TEXT NOT NULL,
             multiplicity BOOLEAN,
+            genderId INTEGER,
             FOREIGN KEY (wordId) REFERENCES UltraWords(id) ON DELETE CASCADE,
             FOREIGN KEY (caseId) REFERENCES Cases(id) ON DELETE CASCADE,
+            FOREIGN KEY (genderId) REFERENCES Genders(id) ON DELETE CASCADE,
             UNIQUE(wordId, caseId)
         )
     ''')
@@ -92,12 +92,10 @@ def create_tables():
             t.value AS Type,
             uw.link AS Link,
             ps.value AS PartOfSpeech,         
-            uw.isDeclinable,
-            g.value AS Gender
+            uw.isDeclinable
         FROM UltraWords uw
         LEFT JOIN Types t ON uw.typeId = t.id
         LEFT JOIN PartsOfSpeech ps ON uw.partOfSpeechId = ps.id
-        LEFT JOIN Genders g ON uw.genderId = g.id
         ORDER BY t.value, uw.value
     ''')
     
