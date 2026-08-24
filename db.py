@@ -18,41 +18,42 @@ def create_tables():
     # === Справочные таблицы ===
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Types (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            value TEXT UNIQUE NOT NULL
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Value TEXT UNIQUE NOT NULL
         )
     ''')
     
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS PartsOfSpeech (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            value TEXT UNIQUE NOT NULL
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Value TEXT UNIQUE NOT NULL
         )
     ''')
     
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Cases (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            value TEXT UNIQUE NOT NULL
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Value TEXT UNIQUE NOT NULL
         )
     ''')
     
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Genders (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            value TEXT UNIQUE NOT NULL
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Value TEXT UNIQUE NOT NULL
         )
     ''')
     
     # === Основная таблица (без caseId) ===
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS UltraWords (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            value TEXT NOT NULL,
-            typeId INTEGER NOT NULL,
-            partOfSpeechId INTEGER,
-            isDeclinable BOOLEAN,
-            link TEXT,
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Value TEXT NOT NULL,
+            TypeId INTEGER NOT NULL,
+            PartOfSpeechId INTEGER,
+            IsDeclinable BOOLEAN,
+            Comment TEXT,
+            Link TEXT,
             DateTimeSaving DATETIME DEFAULT CURRENT_TIMESTAMP,
             UNIQUE(value, typeId),
             FOREIGN KEY (typeId) REFERENCES Types(id) ON DELETE CASCADE,
@@ -63,12 +64,12 @@ def create_tables():
     # === Таблица для падежей ===
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS UltraWordsCases (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            wordId INTEGER NOT NULL,
-            caseId INTEGER NOT NULL,
-            value TEXT NOT NULL,
-            multiplicity BOOLEAN,
-            genderId INTEGER,
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            WordId INTEGER NOT NULL,
+            CaseId INTEGER NOT NULL,
+            Value TEXT NOT NULL,
+            Multiplicity BOOLEAN,
+            GenderId INTEGER,
             FOREIGN KEY (wordId) REFERENCES UltraWords(id) ON DELETE CASCADE,
             FOREIGN KEY (caseId) REFERENCES Cases(id) ON DELETE CASCADE,
             FOREIGN KEY (genderId) REFERENCES Genders(id) ON DELETE CASCADE,
@@ -79,8 +80,8 @@ def create_tables():
     # === Таблица Words (для совместимости) ===
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Words (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            value TEXT UNIQUE NOT NULL
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Value TEXT UNIQUE NOT NULL
         )
     ''')
     
@@ -91,10 +92,11 @@ def create_tables():
             uw.id,
             uw.value AS Word,
             t.value AS Type,
-            uw.link AS Link,
             ps.value AS PartOfSpeech,         
             uw.isDeclinable,
-            uw.DateTimeSaving
+            uw.comment,
+            uw.DateTimeSaving,
+            uw.link AS Link
         FROM UltraWords uw
         LEFT JOIN Types t ON uw.typeId = t.id
         LEFT JOIN PartsOfSpeech ps ON uw.partOfSpeechId = ps.id
