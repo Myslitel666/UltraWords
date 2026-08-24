@@ -53,6 +53,7 @@ def create_tables():
             partOfSpeechId INTEGER,
             isDeclinable BOOLEAN,
             link TEXT,
+            DateTimeSaving DATETIME DEFAULT CURRENT_TIMESTAMP,
             UNIQUE(value, typeId),
             FOREIGN KEY (typeId) REFERENCES Types(id) ON DELETE CASCADE,
             FOREIGN KEY (partOfSpeechId) REFERENCES PartsOfSpeech(id) ON DELETE SET NULL
@@ -92,7 +93,8 @@ def create_tables():
             t.value AS Type,
             uw.link AS Link,
             ps.value AS PartOfSpeech,         
-            uw.isDeclinable
+            uw.isDeclinable,
+            uw.DateTimeSaving
         FROM UltraWords uw
         LEFT JOIN Types t ON uw.typeId = t.id
         LEFT JOIN PartsOfSpeech ps ON uw.partOfSpeechId = ps.id

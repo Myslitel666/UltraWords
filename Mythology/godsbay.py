@@ -3,6 +3,7 @@ import requests
 import sys
 import os
 import time
+from datetime import datetime
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
@@ -58,12 +59,13 @@ def insert_word(cursor, word, link):
     word = capitalize_first(word)
     type_id = get_mythology_type_id(cursor)
     pos_id = get_pos_id(cursor, 'Существительное')
-    
+    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
     cursor.execute('''
         INSERT OR IGNORE INTO UltraWords 
-        (value, typeId, partOfSpeechId, isDeclinable, link) 
-        VALUES (?, ?, ?, ?, ?)
-    ''', (word, type_id, pos_id, 1, link))
+        (value, typeId, partOfSpeechId, isDeclinable, link, DateTimeSaving) 
+        VALUES (?, ?, ?, ?, ?, ?)
+    ''', (word, type_id, pos_id, 1, link, now))
     
     return cursor.rowcount > 0
 
