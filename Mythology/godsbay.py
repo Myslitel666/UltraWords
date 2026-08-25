@@ -58,7 +58,7 @@ def get_pos_id(cursor, pos_name):
 def insert_word(cursor, word, link):
     word = capitalize_first(word)
     type_id = get_mythology_type_id(cursor)
-    pos_id = get_pos_id(cursor, 'Существительное')
+    pos_id = get_pos_id(cursor, 'Собственное')
     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     cursor.execute('''
