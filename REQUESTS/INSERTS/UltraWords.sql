@@ -89,3 +89,63 @@ FROM (
     SELECT 'Мышьяк', 'Химия/Неметаллы/Твёрдое вещество' UNION ALL
     SELECT 'Бром', 'Химия/Неметаллы/Жидкость'
 );
+
+
+-- ============================================================
+-- ЧАСТЬ 5: ЦВЕТА (Н – Я)
+-- ============================================================
+INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, comment, DateTimeSaving)
+SELECT
+    value,
+    (SELECT id FROM Types WHERE value = 'Цвета и оттенки') AS typeId,
+    (SELECT id FROM PartsOfSpeech WHERE value = 'Прилагательное') AS partOfSpeechId,
+    1 AS isDeclinable,
+    'https://colorscheme.ru/color-names.html' AS link,
+    NULL AS comment,
+    datetime('now', 'localtime') AS DateTimeSaving
+FROM (
+    SELECT 'Черновато-красный' AS value UNION ALL
+    SELECT 'Черновато-пурпурный' UNION ALL
+    SELECT 'Черновато-синий' UNION ALL
+    SELECT 'Черный' UNION ALL
+    SELECT 'Черный янтарь' UNION ALL
+    SELECT 'Чертополох' UNION ALL
+    SELECT 'Чертополох Крайола' UNION ALL
+    SELECT 'Шамуа' UNION ALL
+    SELECT 'Шапка Деда Мороза' UNION ALL
+    SELECT 'Шапка Санта-Клауса' UNION ALL
+    SELECT 'Шартрез' UNION ALL
+    SELECT 'Шафраново-желтый' UNION ALL
+    SELECT 'Шафрановый' UNION ALL
+    SELECT 'Шелковица Крайола' UNION ALL
+    SELECT 'Шокирующий розовый Крайола' UNION ALL
+    SELECT 'Шоколадно-коричневый' UNION ALL
+    SELECT 'Шоколадный' UNION ALL
+    SELECT 'Экстравагантный розовый Крайола' UNION ALL
+    SELECT 'Электрик' UNION ALL
+    SELECT 'Электрик лайм' UNION ALL
+    SELECT 'Электрик лайм Крайола' UNION ALL
+    SELECT 'Ядовито-зеленый' UNION ALL
+    SELECT 'Янтарный' UNION ALL
+    SELECT 'Яркий желто-зеленый' UNION ALL
+    SELECT 'Яркий желто-розовый' UNION ALL
+    SELECT 'Яркий зеленовато-желтый' UNION ALL
+    SELECT 'Яркий зеленый' UNION ALL
+    SELECT 'Яркий красно-оранжевый' UNION ALL
+    SELECT 'Яркий красно-пурпурный' UNION ALL
+    SELECT 'Яркий красный' UNION ALL
+    SELECT 'Яркий оранжево-желтый' UNION ALL
+    SELECT 'Яркий оранжевый' UNION ALL
+    SELECT 'Яркий пурпурно-красный' UNION ALL
+    SELECT 'Яркий пурпурный' UNION ALL
+    SELECT 'Яркий синевато-зеленый' UNION ALL
+    SELECT 'Яркий фиолетовый Крайола' UNION ALL
+    SELECT 'Ярко-бирюзовый' UNION ALL
+    SELECT 'Ярко-желтый' UNION ALL
+    SELECT 'Ярко-зеленый' UNION ALL
+    SELECT 'Ярко-мандариновый' UNION ALL
+    SELECT 'Ярко-розовый' UNION ALL
+    SELECT 'Ярко-синий' UNION ALL
+    SELECT 'Ярко-сиреневый' UNION ALL
+    SELECT 'Ярко-фиолетовый'
+);
