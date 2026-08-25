@@ -55,3 +55,37 @@ FROM (
     SELECT 'Цинк' UNION ALL
     SELECT 'Цирконий'
 );
+
+-- Неметаллы (химические элементы с агрегатным состоянием)
+INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, comment, DateTimeSaving)
+SELECT
+    value,
+    (SELECT id FROM Types WHERE value = 'Наука') AS typeId,
+    (SELECT id FROM PartsOfSpeech WHERE value = 'Существительное') AS partOfSpeechId,
+    1 AS isDeclinable,
+    'https://yaruse.ru/posts/show/id/1253' AS link,
+    comment,
+    datetime('now', 'localtime') AS DateTimeSaving
+FROM (
+    SELECT 'Азот' AS value, 'Химия/Неметаллы/Газ' AS comment UNION ALL
+    SELECT 'Водород', 'Химия/Неметаллы/Газ' UNION ALL
+    SELECT 'Гелий', 'Химия/Неметаллы/Газ' UNION ALL
+    SELECT 'Кислород', 'Химия/Неметаллы/Газ' UNION ALL
+    SELECT 'Неон', 'Химия/Неметаллы/Газ' UNION ALL
+    SELECT 'Аргон', 'Химия/Неметаллы/Газ' UNION ALL
+    SELECT 'Криптон', 'Химия/Неметаллы/Газ' UNION ALL
+    SELECT 'Ксенон', 'Химия/Неметаллы/Газ' UNION ALL
+    SELECT 'Радон', 'Химия/Неметаллы/Газ' UNION ALL
+    SELECT 'Фтор', 'Химия/Неметаллы/Газ' UNION ALL
+    SELECT 'Хлор', 'Химия/Неметаллы/Газ' UNION ALL
+    SELECT 'Фосфор', 'Химия/Неметаллы/Твёрдое вещество' UNION ALL
+    SELECT 'Сера', 'Химия/Неметаллы/Твёрдое вещество' UNION ALL
+    SELECT 'Йод', 'Химия/Неметаллы/Твёрдое вещество' UNION ALL
+    SELECT 'Углерод', 'Химия/Неметаллы/Твёрдое вещество' UNION ALL
+    SELECT 'Кремний', 'Химия/Неметаллы/Твёрдое вещество' UNION ALL
+    SELECT 'Бор', 'Химия/Неметаллы/Твёрдое вещество' UNION ALL
+    SELECT 'Селен', 'Химия/Неметаллы/Твёрдое вещество' UNION ALL
+    SELECT 'Теллур', 'Химия/Неметаллы/Твёрдое вещество' UNION ALL
+    SELECT 'Мышьяк', 'Химия/Неметаллы/Твёрдое вещество' UNION ALL
+    SELECT 'Бром', 'Химия/Неметаллы/Жидкость'
+);
