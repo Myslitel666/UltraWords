@@ -1,8 +1,14 @@
-import requests
 import re
+import requests
+from datetime import datetime
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
+from db import get_connection
 
 URL = 'https://azbyka.ru/shemy/imena-biblejskie.shtml'
-OUTPUT_FILE = 'bible_names.txt'
 
 def extract_names_from_table(html):
     names = []
@@ -35,7 +41,7 @@ def extract_names_from_table(html):
         if not name or len(name) < 2:
             continue
         
-        # 🔥 Убираем всё, что в скобках (включая сами скобки)
+        # Убираем всё, что в скобках
         name = re.sub(r'\s*\([^)]*\)\s*', '', name).strip()
         
         # Убираем всё после запятой
@@ -49,7 +55,7 @@ def extract_names_from_table(html):
                     name = name.split(sep)[0].strip()
                     break
         
-        # Убираем номера в скобках (если вдруг остались)
+        # Убираем номера в скобках
         name = re.sub(r'\s*\(\d+\)\s*', '', name).strip()
         
         if name in ['См.', 'См', 'см', '—', '–', '-', '']:
@@ -57,7 +63,7 @@ def extract_names_from_table(html):
         
         names.append(name)
     
-    # Убираем дубликаты
+    # Убираем дубликаты, сохраняя порядок
     seen = set()
     unique_names = []
     for name in names:
@@ -67,7 +73,41 @@ def extract_names_from_table(html):
     
     return unique_names
 
+def insert_names(cursor, names, link):
+    """Вставляет имена в UltraWords."""
+    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    inserted = 0
+    
+    # Получаем ID типа и части речи
+    cursor.execute("SELECT id FROM Types WHERE value = 'Имена'")
+    type_row = cursor.fetchone()
+    if not type_row:
+        print("   ❌ Тип 'Имена' не найден в таблице Types!")
+        return 0
+    type_id = type_row[0]
+    
+    cursor.execute("SELECT id FROM PartsOfSpeech WHERE value = 'Собственное'")
+    pos_row = cursor.fetchone()
+    if not pos_row:
+        print("   ❌ Часть речи 'Собственное' не найдена в таблице PartsOfSpeech!")
+        return 0
+    pos_id = pos_row[0]
+    
+    for name in names:
+        cursor.execute('''
+            INSERT OR IGNORE INTO UltraWords 
+            (value, typeId, partOfSpeechId, isDeclinable, link, comment, DateTimeSaving) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        ''', (name, type_id, pos_id, 1, link, 'Библия', now))
+        if cursor.rowcount > 0:
+            inserted += 1
+    
+    return inserted
+
 def main():
+    conn = get_connection()
+    cursor = conn.cursor()
+    
     print(f"🌐 Загружаю: {URL}")
     
     try:
@@ -77,24 +117,25 @@ def main():
         html = response.text
     except Exception as e:
         print(f"❌ Ошибка загрузки: {e}")
+        conn.close()
         return
     
     names = extract_names_from_table(html)
     
     if not names:
         print("⏭️ Имён не найдено")
+        conn.close()
         return
     
-    print(f"\n📝 Найдено имён: {len(names)}\n")
+    print(f"\n📝 Найдено имён: {len(names)}")
     
-    for name in names:
-        print(f"   {name}")
+    # Вставляем в базу
+    inserted = insert_names(cursor, names, URL)
+    conn.commit()
+    conn.close()
     
-    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        for name in names:
-            f.write(name + '\n')
-    
-    print(f"\n✅ Файл сохранён: {OUTPUT_FILE}")
+    print(f"   ➡️ Вставлено: {inserted} (новых)")
+    print(f"\n✅ Готово!")
 
 if __name__ == '__main__':
     main()
