@@ -1,62 +1,115 @@
--- Наука/Химия/Металлы
+-- Запрос с вариативностью по частям речи (сузествительное/прилагательное)
+-- Регионы России (краткие названия)
 INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, comment, DateTimeSaving)
 SELECT
     value,
-    (SELECT id FROM Types WHERE value = 'Наука') AS typeId,
-    (SELECT id FROM PartsOfSpeech WHERE value = 'Существительное') AS partOfSpeechId,
+    6 AS typeId,
+    partOfSpeechId,
     1 AS isDeclinable,
-    'https://yaruse.ru/posts/show/id/1253' AS link,
-    'Химия/Металлы' as comment,
+    'https://www.consultant.ru/document/cons_doc_LAW_108669/88a12659e7cc781c56303430d98ae6c8a683892a/' AS link,
+    comment,
     datetime('now', 'localtime') AS DateTimeSaving
 FROM (
-    SELECT 'Алюминий' AS value UNION ALL
-    SELECT 'Барий' UNION ALL
-    SELECT 'Берилий' UNION ALL
-    SELECT 'Ванадий' UNION ALL
-    SELECT 'Висмут' UNION ALL
-    SELECT 'Вольфрам' UNION ALL
-    SELECT 'Галий' UNION ALL
-    SELECT 'Гафний' UNION ALL
-    SELECT 'Германий' UNION ALL
-    SELECT 'Железо' UNION ALL
-    SELECT 'Золото' UNION ALL
-    SELECT 'Индий' UNION ALL
-    SELECT 'Иридий' UNION ALL
-    SELECT 'Кадмий' UNION ALL
-    SELECT 'Калий' UNION ALL
-    SELECT 'Кальций' UNION ALL
-    SELECT 'Кобальт' UNION ALL
-    SELECT 'Литий' UNION ALL
-    SELECT 'Магний' UNION ALL
-    SELECT 'Марганец' UNION ALL
-    SELECT 'Медь' UNION ALL
-    SELECT 'Молибден' UNION ALL
-    SELECT 'Натрий' UNION ALL
-    SELECT 'Никель' UNION ALL
-    SELECT 'Ниобий' UNION ALL
-    SELECT 'Олово' UNION ALL
-    SELECT 'Осмий' UNION ALL
-    SELECT 'Палладий' UNION ALL
-    SELECT 'Платина' UNION ALL
-    SELECT 'Рений' UNION ALL
-    SELECT 'Родий' UNION ALL
-    SELECT 'Ртуть' UNION ALL
-    SELECT 'Рубидий' UNION ALL
-    SELECT 'Рутений' UNION ALL
-    SELECT 'Свинец' UNION ALL
-    SELECT 'Серебро' UNION ALL
-    SELECT 'Стронций' UNION ALL
-    SELECT 'Сурьма' UNION ALL
-    SELECT 'Таллий' UNION ALL
-    SELECT 'Тантал' UNION ALL
-    SELECT 'Титан' UNION ALL
-    SELECT 'Уран' UNION ALL
-    SELECT 'Хром' UNION ALL
-    SELECT 'Цинк' UNION ALL
-    SELECT 'Цирконий'
+    -- Республики (существительные, partOfSpeechId = 1)
+    SELECT 'Адыгея' AS value, 1 AS partOfSpeechId, 'Российские/Республики' AS comment UNION ALL
+    SELECT 'Башкортостан', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Бурятия', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Алтай', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Дагестан', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Ингушетия', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Кабардино-Балкарская', 2, 'Российские/Республики' UNION ALL
+    SELECT 'Калмыкия', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Карачаево-Черкесская', 2, 'Российские/Республики' UNION ALL
+    SELECT 'Карелия', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Коми', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Марий Эл', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Мордовия', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Саха', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Якутия', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Северная Осетия', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Алания', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Татарстан', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Тыва', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Удмуртская', 2, 'Российские/Республики' UNION ALL
+    SELECT 'Хакасия', 1, 'Российские/Республики' UNION ALL
+    SELECT 'Чеченская', 2, 'Российские/Республики' UNION ALL
+    SELECT 'Чувашская', 2, 'Российские/Республики' UNION ALL
+
+    -- Края (прилагательные, partOfSpeechId = 2)
+    SELECT 'Алтайский', 2, 'Российские/Края' UNION ALL
+    SELECT 'Краснодарский', 2, 'Российские/Края' UNION ALL
+    SELECT 'Красноярский', 2, 'Российские/Края' UNION ALL
+    SELECT 'Приморский', 2, 'Российские/Края' UNION ALL
+    SELECT 'Ставропольский', 2, 'Российские/Края' UNION ALL
+    SELECT 'Хабаровский', 2, 'Российские/Края' UNION ALL
+    SELECT 'Камчатский', 2, 'Российские/Края' UNION ALL
+    SELECT 'Пермский', 2, 'Российские/Края' UNION ALL
+    SELECT 'Забайкальский', 2, 'Российские/Края' UNION ALL
+
+    -- Области (прилагательные, partOfSpeechId = 2)
+    SELECT 'Амурская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Архангельская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Астраханская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Белгородская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Брянская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Владимирская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Волгоградская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Вологодская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Воронежская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Ивановская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Иркутская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Калининградская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Калужская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Кемеровская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Кировская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Костромская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Курганская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Курская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Ленинградская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Липецкая', 2, 'Российские/Области' UNION ALL
+    SELECT 'Магаданская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Московская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Мурманская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Нижегородская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Новгородская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Новосибирская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Омская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Оренбургская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Орловская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Пензенская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Псковская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Ростовская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Рязанская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Самарская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Саратовская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Сахалинская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Свердловская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Смоленская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Тамбовская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Тверская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Томская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Тульская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Тюменская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Ульяновская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Челябинская', 2, 'Российские/Области' UNION ALL
+    SELECT 'Ярославская', 2, 'Российские/Области' UNION ALL
+
+    -- Города федерального значения (существительные, partOfSpeechId = 1)
+    SELECT 'Москва', 1, 'Российские/Города' UNION ALL
+    SELECT 'Санкт-Петербург', 1, 'Российские/Города' UNION ALL
+
+    -- Автономные образования (прилагательные, partOfSpeechId = 2)
+    SELECT 'Еврейская', 2, 'Российские/Автономные области' UNION ALL
+    SELECT 'Ненецкий', 2, 'Российские/Автономные округа' UNION ALL
+    SELECT 'Ханты-Мансийский', 2, 'Российские/Автономные округа' UNION ALL
+    SELECT 'Чукотский', 2, 'Российские/Автономные округа' UNION ALL
+    SELECT 'Ямало-Ненецкий', 2, 'Российские/Автономные округа' UNION ALL
+
+    -- Особые территории (существительное, partOfSpeechId = 1)
+    SELECT 'Байконур', 1, 'Российские/Особые территории'
 );
 
--- Неметаллы (химические элементы с агрегатным состоянием)
+-- Запрос с одинаковыми частями речи
 INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, comment, DateTimeSaving)
 SELECT
     value,
@@ -88,64 +141,4 @@ FROM (
     SELECT 'Теллур', 'Химия/Неметаллы/Твёрдое вещество' UNION ALL
     SELECT 'Мышьяк', 'Химия/Неметаллы/Твёрдое вещество' UNION ALL
     SELECT 'Бром', 'Химия/Неметаллы/Жидкость'
-);
-
-
--- ============================================================
--- ЧАСТЬ 5: ЦВЕТА (Н – Я)
--- ============================================================
-INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, comment, DateTimeSaving)
-SELECT
-    value,
-    (SELECT id FROM Types WHERE value = 'Цвета и оттенки') AS typeId,
-    (SELECT id FROM PartsOfSpeech WHERE value = 'Прилагательное') AS partOfSpeechId,
-    1 AS isDeclinable,
-    'https://colorscheme.ru/color-names.html' AS link,
-    NULL AS comment,
-    datetime('now', 'localtime') AS DateTimeSaving
-FROM (
-    SELECT 'Черновато-красный' AS value UNION ALL
-    SELECT 'Черновато-пурпурный' UNION ALL
-    SELECT 'Черновато-синий' UNION ALL
-    SELECT 'Черный' UNION ALL
-    SELECT 'Черный янтарь' UNION ALL
-    SELECT 'Чертополох' UNION ALL
-    SELECT 'Чертополох Крайола' UNION ALL
-    SELECT 'Шамуа' UNION ALL
-    SELECT 'Шапка Деда Мороза' UNION ALL
-    SELECT 'Шапка Санта-Клауса' UNION ALL
-    SELECT 'Шартрез' UNION ALL
-    SELECT 'Шафраново-желтый' UNION ALL
-    SELECT 'Шафрановый' UNION ALL
-    SELECT 'Шелковица Крайола' UNION ALL
-    SELECT 'Шокирующий розовый Крайола' UNION ALL
-    SELECT 'Шоколадно-коричневый' UNION ALL
-    SELECT 'Шоколадный' UNION ALL
-    SELECT 'Экстравагантный розовый Крайола' UNION ALL
-    SELECT 'Электрик' UNION ALL
-    SELECT 'Электрик лайм' UNION ALL
-    SELECT 'Электрик лайм Крайола' UNION ALL
-    SELECT 'Ядовито-зеленый' UNION ALL
-    SELECT 'Янтарный' UNION ALL
-    SELECT 'Яркий желто-зеленый' UNION ALL
-    SELECT 'Яркий желто-розовый' UNION ALL
-    SELECT 'Яркий зеленовато-желтый' UNION ALL
-    SELECT 'Яркий зеленый' UNION ALL
-    SELECT 'Яркий красно-оранжевый' UNION ALL
-    SELECT 'Яркий красно-пурпурный' UNION ALL
-    SELECT 'Яркий красный' UNION ALL
-    SELECT 'Яркий оранжево-желтый' UNION ALL
-    SELECT 'Яркий оранжевый' UNION ALL
-    SELECT 'Яркий пурпурно-красный' UNION ALL
-    SELECT 'Яркий пурпурный' UNION ALL
-    SELECT 'Яркий синевато-зеленый' UNION ALL
-    SELECT 'Яркий фиолетовый Крайола' UNION ALL
-    SELECT 'Ярко-бирюзовый' UNION ALL
-    SELECT 'Ярко-желтый' UNION ALL
-    SELECT 'Ярко-зеленый' UNION ALL
-    SELECT 'Ярко-мандариновый' UNION ALL
-    SELECT 'Ярко-розовый' UNION ALL
-    SELECT 'Ярко-синий' UNION ALL
-    SELECT 'Ярко-сиреневый' UNION ALL
-    SELECT 'Ярко-фиолетовый'
 );
