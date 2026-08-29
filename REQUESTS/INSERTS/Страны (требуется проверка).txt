@@ -1,0 +1,234 @@
+-- Страны по континентам (с указанием Popularity)
+INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, comment, DateTimeSaving, Popularity)
+SELECT
+    value,
+    6 AS typeId,
+    1 AS partOfSpeechId,
+    1 AS isDeclinable,
+    'deepseek.com' AS link,
+    comment,
+    datetime('now', 'localtime') AS DateTimeSaving,
+    popularity
+FROM (
+    -- ============ ЕВРОПА (Популярные) ============
+    SELECT 'Австрия' AS value, 'Страны/Европа' AS comment, 1 AS popularity UNION ALL
+    SELECT 'Беларусь', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Бельгия', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Болгария', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Великобритания', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Венгрия', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Германия', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Греция', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Дания', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Ирландия', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Испания', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Италия', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Латвия', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Литва', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Нидерланды', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Норвегия', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Польша', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Португалия', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Россия', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Румыния', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Сербия', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Финляндия', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Франция', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Хорватия', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Чехия', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Швейцария', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Швеция', 'Страны/Европа', 1 UNION ALL
+    SELECT 'Эстония', 'Страны/Европа', 1 UNION ALL
+    
+    -- ============ ЕВРОПА (Обычные) ============
+    SELECT 'Албания', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Андорра', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Босния и Герцеговина', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Ватикан', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Исландия', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Лихтенштейн', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Люксембург', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Мальта', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Молдавия', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Монако', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Сан-Марино', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Северная Македония', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Словакия', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Словения', 'Страны/Европа', 0 UNION ALL
+    SELECT 'Черногория', 'Страны/Европа', 0 UNION ALL
+
+    -- ============ АЗИЯ (Популярные) ============
+    SELECT 'Азербайджан', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Армения', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Вьетнам', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Грузия', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Израиль', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Индия', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Индонезия', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Иран', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Казахстан', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Китай', 'Страны/Азия', 1 UNION ALL
+    SELECT 'ОАЭ', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Пакистан', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Сингапур', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Таджикистан', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Таиланд', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Турция', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Узбекистан', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Филиппины', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Южная Корея', 'Страны/Азия', 1 UNION ALL
+    SELECT 'Япония', 'Страны/Азия', 1 UNION ALL
+    
+    -- ============ АЗИЯ (Обычные) ============
+    SELECT 'Афганистан', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Бангладеш', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Бахрейн', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Бруней', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Бутан', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Иордания', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Ирак', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Йемен', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Камбоджа', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Катар', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Кипр', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Кувейт', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Кыргызстан', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Лаос', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Ливан', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Малайзия', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Мальдивы', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Монголия', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Мьянма', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Непал', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Оман', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Саудовская Аравия', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Сирия', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Туркменистан', 'Страны/Азия', 0 UNION ALL
+    SELECT 'Шри-Ланка', 'Страны/Азия', 0 UNION ALL
+
+    -- ============ АФРИКА (Популярные) ============
+    SELECT 'Алжир', 'Страны/Африка', 1 UNION ALL
+    SELECT 'Египет', 'Страны/Африка', 1 UNION ALL
+    SELECT 'Кения', 'Страны/Африка', 1 UNION ALL
+    SELECT 'Марокко', 'Страны/Африка', 1 UNION ALL
+    SELECT 'Нигерия', 'Страны/Африка', 1 UNION ALL
+    SELECT 'Тунис', 'Страны/Африка', 1 UNION ALL
+    SELECT 'ЮАР', 'Страны/Африка', 1 UNION ALL
+    
+    -- ============ АФРИКА (Обычные) ============
+    SELECT 'Ангола', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Бенин', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Ботсвана', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Буркина-Фасо', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Бурунди', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Габон', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Гамбия', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Гана', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Гвинея', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Джибути', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Замбия', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Зимбабве', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Кабо-Верде', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Камерун', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Коморы', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Конго', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Кот-д''Ивуар', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Лесото', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Либерия', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Ливия', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Маврикий', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Мавритания', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Мадагаскар', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Малави', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Мали', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Мозамбик', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Намибия', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Нигер', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Руанда', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Сан-Томе и Принсипи', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Сейшельские Острова', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Сенегал', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Сомали', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Судан', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Сьерра-Леоне', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Танзания', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Того', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Уганда', 'Страны/Африка', 0 UNION ALL
+    SELECT 'ЦАР', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Чад', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Экваториальная Гвинея', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Эритрея', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Эсватини', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Эфиопия', 'Страны/Африка', 0 UNION ALL
+    SELECT 'Южный Судан', 'Страны/Африка', 0 UNION ALL
+
+    -- ============ СЕВЕРНАЯ АМЕРИКА (Популярные) ============
+    SELECT 'Канада', 'Страны/Сев. Америка', 1 UNION ALL
+    SELECT 'Мексика', 'Страны/Сев. Америка', 1 UNION ALL
+    SELECT 'США', 'Страны/Сев. Америка', 1 UNION ALL
+    
+    -- ============ СЕВЕРНАЯ АМЕРИКА (Обычные) ============
+    SELECT 'Антигуа и Барбуда', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Багамы', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Барбадос', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Белиз', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Гаити', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Гватемала', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Гондурас', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Гренада', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Доминика', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Доминиканская Республика', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Коста-Рика', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Куба', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Никарагуа', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Панама', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Сальвадор', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Сент-Винсент и Гренадины', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Сент-Китс и Невис', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Сент-Люсия', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Тринидад и Тобаго', 'Страны/Сев. Америка', 0 UNION ALL
+    SELECT 'Ямайка', 'Страны/Сев. Америка', 0 UNION ALL
+
+    -- ============ ЮЖНАЯ АМЕРИКА (Популярные) ============
+    SELECT 'Аргентина', 'Страны/Юж. Америка', 1 UNION ALL
+    SELECT 'Бразилия', 'Страны/Юж. Америка', 1 UNION ALL
+    SELECT 'Венесуэла', 'Страны/Юж. Америка', 1 UNION ALL
+    SELECT 'Колумбия', 'Страны/Юж. Америка', 1 UNION ALL
+    SELECT 'Перу', 'Страны/Юж. Америка', 1 UNION ALL
+    SELECT 'Чили', 'Страны/Юж. Америка', 1 UNION ALL
+    
+    -- ============ ЮЖНАЯ АМЕРИКА (Обычные) ============
+    SELECT 'Боливия', 'Страны/Юж. Америка', 0 UNION ALL
+    SELECT 'Гайана', 'Страны/Юж. Америка', 0 UNION ALL
+    SELECT 'Парагвай', 'Страны/Юж. Америка', 0 UNION ALL
+    SELECT 'Суринам', 'Страны/Юж. Америка', 0 UNION ALL
+    SELECT 'Уругвай', 'Страны/Юж. Америка', 0 UNION ALL
+    SELECT 'Эквадор', 'Страны/Юж. Америка', 0 UNION ALL
+
+    -- ============ АВСТРАЛИЯ И ОКЕАНИЯ (Популярные) ============
+    SELECT 'Австралия', 'Страны/Австралия и Океания', 1 UNION ALL
+    SELECT 'Новая Зеландия', 'Страны/Австралия и Океания', 1 UNION ALL
+    
+    -- ============ АВСТРАЛИЯ И ОКЕАНИЯ (Обычные) ============
+    SELECT 'Вануату', 'Страны/Австралия и Океания', 0 UNION ALL
+    SELECT 'Кирибати', 'Страны/Австралия и Океания', 0 UNION ALL
+    SELECT 'Маршалловы Острова', 'Страны/Австралия и Океания', 0 UNION ALL
+    SELECT 'Микронезия', 'Страны/Австралия и Океания', 0 UNION ALL
+    SELECT 'Науру', 'Страны/Австралия и Океания', 0 UNION ALL
+    SELECT 'Палау', 'Страны/Австралия и Океания', 0 UNION ALL
+    SELECT 'Папуа - Новая Гвинея', 'Страны/Австралия и Океания', 0 UNION ALL
+    SELECT 'Самоа', 'Страны/Австралия и Океания', 0 UNION ALL
+    SELECT 'Соломоновы Острова', 'Страны/Австралия и Океания', 0 UNION ALL
+    SELECT 'Тонга', 'Страны/Австралия и Океания', 0 UNION ALL
+    SELECT 'Тувалу', 'Страны/Австралия и Океания', 0 UNION ALL
+    SELECT 'Фиджи', 'Страны/Австралия и Океания', 0 UNION ALL
+
+    -- ============ ЧАСТИЧНО ПРИЗНАННЫЕ ============
+    SELECT 'Абхазия', 'Страны/Частично признанные', 0 UNION ALL
+    SELECT 'Косово', 'Страны/Частично признанные', 0 UNION ALL
+    SELECT 'Южная Осетия', 'Страны/Частично признанные', 0 UNION ALL
+
+    -- ============ НЕПРИЗНАННЫЕ ============
+    SELECT 'Приднестровье', 'Страны/Непризнанные', 0 UNION ALL
+    SELECT 'Северный Кипр', 'Страны/Непризнанные', 0
+);
