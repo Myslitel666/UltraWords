@@ -1,42 +1,40 @@
-from mawo_pymorphy3 import create_analyzer
+from pymystem3 import Mystem
 import sqlite3
 
 # Подключаемся к базе
 conn = sqlite3.connect('UltraWords.db')
 cursor = conn.cursor()
 
-# Создаем анализатор
-analyzer = create_analyzer()
+# Создаем анализатор Mystem
+m = Mystem()
 
-# Словарь для преобразования POS-тегов в человекочитаемый вид
+# Словарь для преобразования POS-тегов Mystem в человекочитаемый вид
 POS_MAP = {
-    'NOUN': 'Существительное',
-    'ADJF': 'Прилагательное',
-    'ADJS': 'Прилагательное (краткое)',
-    'VERB': 'Глагол',
-    'INFN': 'Глагол (инфинитив)',
-    'ADVB': 'Наречие',
-    'PRTF': 'Причастие',
-    'PRTS': 'Причастие (краткое)',
-    'GRND': 'Деепричастие',
-    'NUMR': 'Числительное',
-    'ADJ': 'Прилагательное',
-    'NPRO': 'Местоимение',
-    'PRED': 'Предикатив',
-    'PREP': 'Предлог',
+    'A': 'Прилагательное',
+    'ADV': 'Наречие',
+    'ADVPRO': 'Наречие-местоимение',
+    'ANUM': 'Прилагательное-числительное',
+    'APRO': 'Прилагательное-местоимение',
+    'COM': 'Часть композита',
     'CONJ': 'Союз',
-    'PRCL': 'Частица',
     'INTJ': 'Междометие',
+    'NUM': 'Числительное',
+    'PART': 'Частица',
+    'PR': 'Предлог',
+    'S': 'Существительное',
+    'SPRO': 'Местоимение',
+    'V': 'Глагол',
+    'UNKN': 'Неизвестно',
 }
 
 # Список тегов, которые считаем мусором и не выводим
-SKIP_TAGS = {'UNKN', 'LATN', 'PNCT', 'NUMB'}
+SKIP_TAGS = {'UNKN'}
 
-# Читаем первые 1000 строк из таблицы Words, сортируем по Value
-cursor.execute('SELECT Id, Value, Link FROM Words Where Link is not null ORDER BY Value LIMIT 5000')
+# Читаем строки из таблицы Words
+cursor.execute('SELECT Id, Value, Link FROM Words ORDER BY Value LIMIT 5000')
 rows = cursor.fetchall()
 
-# Для отслеживания уникальных нормальных форм и их данных
+# Для отслеживания уникальных нормальных форм
 seen_lemmas = {}
 result = []
 
@@ -45,15 +43,29 @@ print("-" * 120)
 
 for row_id, value, link in rows:
     try:
-        # Анализируем слово
-        parse_result = analyzer.parse(value)[0]
-        pos_tag = parse_result.tag.POS
+        # Анализируем слово через Mystem
+        result_mystem = m.analyze(value)[0]
+        
+        # Проверяем, есть ли анализ
+        if 'analysis' not in result_mystem or not result_mystem['analysis']:
+            continue
+        
+        analysis = result_mystem['analysis'][0]
+        
+        # Получаем лемму (начальную форму)
+        normal_form = analysis.get('lex', value)
+        
+        # Получаем часть речи
+        gr = analysis.get('gr', '')
+        if gr:
+            # Берём первую часть до запятой — это POS-тег
+            pos_tag = gr.split(',')[0]
+        else:
+            pos_tag = 'UNKN'
         
         # Пропускаем мусорные теги
         if pos_tag in SKIP_TAGS:
             continue
-        
-        normal_form = parse_result.normal_form
         
         # Проверяем, не встречалась ли уже эта нормальная форма
         if normal_form in seen_lemmas:
