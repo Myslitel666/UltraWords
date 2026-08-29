@@ -87,7 +87,7 @@ def insert_surname(cursor, surname, link):
     type_id = get_type_id(cursor, 'Фамилии')
     
     # Часть речи "Собственное"
-    pos_id = get_pos_id(cursor, 'Собственное')
+    pos_id = get_pos_id(cursor, 'Существительное')
     
     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     

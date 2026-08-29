@@ -37,7 +37,7 @@ def insert_surnames(cursor, surnames, link):
         return 0
     type_id = type_row[0]
     
-    cursor.execute("SELECT id FROM PartsOfSpeech WHERE value = 'Собственное'")
+    cursor.execute("SELECT id FROM PartsOfSpeech WHERE value = 'Существительное'")
     pos_row = cursor.fetchone()
     if not pos_row:
         print("   ❌ Часть речи 'Собственное' не найдена в таблице PartsOfSpeech!")
