@@ -31,7 +31,7 @@ POS_MAP = {
 SKIP_TAGS = {'UNKN'}
 
 # Читаем строки из таблицы Words
-cursor.execute('SELECT Id, Value, Link FROM Words ORDER BY Value LIMIT 5000')
+cursor.execute('SELECT Id, Value, Link FROM Words WHERE link IS NOT NULL ORDER BY Value LIMIT 5000')
 rows = cursor.fetchall()
 
 # Для отслеживания уникальных нормальных форм
@@ -58,8 +58,11 @@ for row_id, value, link in rows:
         # Получаем часть речи
         gr = analysis.get('gr', '')
         if gr:
-            # Берём первую часть до запятой — это POS-тег
-            pos_tag = gr.split(',')[0]
+            # Берём POS-тег:
+            # "S,сред,неод" -> S
+            # "A=(вин,род=муж" -> A
+            # "A,род=муж,число=ед" -> A
+            pos_tag = gr.split(',')[0].split('=')[0].split('(')[0]
         else:
             pos_tag = 'UNKN'
         
