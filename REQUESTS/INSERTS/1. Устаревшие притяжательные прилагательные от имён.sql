@@ -1,5 +1,5 @@
 -- Обычные слова из файла АВП
-INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, comment, DateTimeSaving, Popularity, IsModern)
+--INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, comment, DateTimeSaving, Popularity, IsModern)
 SELECT
     value,
     (SELECT Id FROM Types WHERE Value = 'Имена') AS typeId,
@@ -13,7 +13,7 @@ SELECT
 FROM (
     -- ============ СУЩЕСТВИТЕЛЬНЫЕ ============
     SELECT 
-      OLD_NAMES_TRANSF(uw.value, c.id) as value, 
+      OLD_NAMES_TRANSF_TO_ADJECTIVE(uw.value, c.id, 1) as value, 
       c.value
     FROM UltraWords uw
     JOIN Cases c
