@@ -53,6 +53,7 @@ def create_tables():
             PartOfSpeechId INTEGER,
             IsDeclinable BOOLEAN,
             Popularity BOOLEAN DEFAULT FALSE,
+            IsModern BOOLEAN DEFAULT TRUE,
             Comment TEXT,
             Link TEXT,
             DateTimeSaving DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -96,6 +97,7 @@ def create_tables():
             ps.value AS PartOfSpeech,         
             uw.isDeclinable,
             uw.Popularity,
+            uw.IsModern,
             uw.comment,
             uw.DateTimeSaving,
             uw.link AS Link
