@@ -75,7 +75,7 @@ def create_tables():
             FOREIGN KEY (wordId) REFERENCES UltraWords(id) ON DELETE CASCADE,
             FOREIGN KEY (caseId) REFERENCES Cases(id) ON DELETE CASCADE,
             FOREIGN KEY (genderId) REFERENCES Genders(id) ON DELETE CASCADE,
-            UNIQUE(wordId, caseId)
+            UNIQUE(wordId, caseId, Multiplicity)
         )
     ''')
     
@@ -87,7 +87,7 @@ def create_tables():
         )
     ''')
     
-    # === Представление ===
+    # === Представление UltraWordsX ===
     cursor.execute('''
         CREATE VIEW IF NOT EXISTS UltraWordsX AS
         SELECT 
@@ -105,6 +105,27 @@ def create_tables():
         LEFT JOIN Types t ON uw.typeId = t.id
         LEFT JOIN PartsOfSpeech ps ON uw.partOfSpeechId = ps.id
         ORDER BY t.value, uw.value
+    ''')
+
+    # === Представление UltraWordsCasesX ===
+    cursor.execute('''
+        CREATE VIEW IF NOT EXISTS UltraWordsCasesX AS
+        SELECT 
+            UWC.Id,
+            UWC.Value,
+            POF.Value AS PartOfSpeech,
+            CASE WHEN UWC.Multiplicity = 1
+                THEN 'Ед.ч.'
+                ELSE 'Мн.ч.'
+            END AS Multiplicity,
+            C.Value AS CaseValue,
+            G.Value AS Gender,
+            UW.Value AS Infinitive
+        FROM UltraWordsCases UWC
+        JOIN UltraWords UW ON UWC.WordId = UW.Id
+        JOIN PartsOfSpeech POF ON UW.PartOfSpeechId = POF.Id
+        JOIN Cases C ON UWC.CaseId = C.Id
+        JOIN Genders G ON UWC.GenderId = G.Id
     ''')
     
     # === Начальное заполнение справочников ===
