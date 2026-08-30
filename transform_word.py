@@ -1,33 +1,50 @@
 class WordTransformer:
     # Словарь падежей
     CASES = {
-        'им': 'Именительный',
-        'род': 'Родительный',
-        'дат': 'Дательный',
-        'вин': 'Винительный',
-        'твор': 'Творительный',
-        'пр': 'Предложный'
+        1: 'Именительный',
+        2: 'Родительный',
+        3: 'Дательный',
+        4: 'Винительный',
+        5: 'Творительный',
+        6: 'Предложный'
+    }
+
+    # Словарь частей речи
+    PartsOfSpeech = {
+        1: 'Существительное',
+        2: 'Прилагательное',
+        3: 'Глагол'
     }
 
     def __init__(self, ultra_words):
-        """
-        Инициализация трансформера
-        
-        Args:
-            ultra_words: объект класса UltraWords (содержит данные о словах)
-        """
         self.ultra_words = ultra_words
 
-    def get_word_info(self, word: str) -> Optional[Dict]:
-        for w in self.ultra_words:
-            if w['value'] == word:
-                return {
-                    'id': w['id'],
-                    'value': w['value'],
-                    'type_id': w['type_id'],
-                    'part_of_speech_id': w.get('part_of_speech_id', 1),
-                    'is_declinable': w.get('is_declinable', 1),
-                    'comment': w.get('comment', ''),
-                    'pos_name': self.POS_NAMES.get(w.get('type_id', 1), 'Неизвестно')
-                }
-        return None
+    def transf(self, word_obj, case_id: int, multiplicity: int = 1) -> str:
+        word = word_obj['Value']
+        pos_id = word_obj.get('PartOfSpeechId', 1)
+        type_id = word_obj.get('TypeId', 1)
+        
+        # Если TypeId = 1 и PartOfSpeechId = 1 (Существительное)
+        if type_id == 1 and pos_id == 1:
+            if case_id == 1: return word
+            elif case_id == 2: return word + 'а' if multiplicity == 1 else word + 'ов'
+            elif case_id == 3: return word + 'у' if multiplicity == 1 else word + 'ам'
+            elif case_id == 4: return word + 'а' if multiplicity == 1 else word + 'ов'
+            elif case_id == 5: return word + 'ом' if multiplicity == 1 else word + 'ами'
+            elif case_id == 6: return word + 'е' if multiplicity == 1 else word + 'ах'
+        
+        # Если TypeId = 1 и PartOfSpeechId = 2 (Прилагательное)
+        elif type_id == 1 and pos_id == 2:
+            if case_id == 1: return word
+            elif case_id == 2: return word + 'ого'
+            elif case_id == 3: return word + 'ому'
+            elif case_id == 4: return word + 'ый'
+            elif case_id == 5: return word + 'ым'
+            elif case_id == 6: return word + 'ом'
+        
+        # Если TypeId = 1 и PartOfSpeechId = 3 (Глагол)
+        elif type_id == 1 and pos_id == 3:
+            return word
+        
+        # По умолчанию
+        return word
