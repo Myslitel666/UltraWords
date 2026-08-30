@@ -126,6 +126,7 @@ def create_tables():
         JOIN PartsOfSpeech POF ON UW.PartOfSpeechId = POF.Id
         JOIN Cases C ON UWC.CaseId = C.Id
         JOIN Genders G ON UWC.GenderId = G.Id
+        ORDER BY UWC.value
     ''')
     
     # === Начальное заполнение справочников ===
