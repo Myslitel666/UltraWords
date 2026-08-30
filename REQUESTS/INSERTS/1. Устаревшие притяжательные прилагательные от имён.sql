@@ -1,5 +1,5 @@
 -- Обычные слова из файла АВП
---INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, comment, DateTimeSaving, Popularity, IsModern)
+INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, comment, DateTimeSaving, Popularity, IsModern)
 SELECT
     value,
     (SELECT Id FROM Types WHERE Value = 'Имена') AS typeId,
