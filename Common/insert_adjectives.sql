@@ -17,28 +17,28 @@ SELECT
     Comment,
     TypeId
 FROM (
-    SELECT 'Абхазский' AS value, 0 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
+    SELECT 'Абхазский' AS value, 0 as popularity, 1 as isModern, 'Страны' as Comment, 6 as TypeId UNION ALL
     SELECT 'Авангардный' AS value, 1 as popularity, 1 as isModern, 'Творчество' as Comment, 7 as TypeId UNION ALL
     SELECT 'Авантюрный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
     SELECT 'Аварийный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
     SELECT 'Августейший' AS value, 1 as popularity, 0 as isModern, NULL as Comment, 7 as TypeId UNION ALL
-    SELECT 'Августовский' AS value, 0 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
-    SELECT 'Авиационный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
-    SELECT 'Австралийский' AS value, 0 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
-    SELECT 'Австрийский' AS value, 0 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
-    SELECT 'Автобиографический' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
+    SELECT 'Августовский' AS value, 0 as popularity, 1 as isModern, 'Месяцы' as Comment, 7 as TypeId UNION ALL
+    SELECT 'Авиационный' AS value, 1 as popularity, 1 as isModern, 'Авиастроение' as Comment, 3 as TypeId UNION ALL
+    SELECT 'Австралийский' AS value, 0 as popularity, 1 as isModern, 'Страны' as Comment, 7 as TypeId UNION ALL
+    SELECT 'Австрийский' AS value, 0 as popularity, 1 as isModern, 'Страны' as Comment, 7 as TypeId UNION ALL
+    SELECT 'Автобиографический' AS value, 1 as popularity, 1 as isModern, 'Литературоведение' as Comment, 3 as TypeId UNION ALL
     SELECT 'Автобусный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
-    SELECT 'Автоматизированный' AS value, 1 as popularity, 1 as isModern, 'Творчество' as Comment, 7 as TypeId UNION ALL
-    SELECT 'Автоматический' AS value, 1 as popularity, 1 as isModern, 'Творчество' as Comment, 7 as TypeId UNION ALL
-    SELECT 'Автоматный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
-    SELECT 'Автомобильный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
-    SELECT 'Автономный' AS value, 1 as popularity, 1 as isModern, 'Творчество' as Comment, 7 as TypeId UNION ALL
+    SELECT 'Автоматизированный' AS value, 1 as popularity, 1 as isModern, 'Техническое' as Comment, 7 as TypeId UNION ALL
+    SELECT 'Автоматический' AS value, 1 as popularity, 1 as isModern, 'Техническое' as Comment, 7 as TypeId UNION ALL
+    SELECT 'Автоматный' AS value, 1 as popularity, 1 as isModern, 'Техническое' as Comment, 7 as TypeId UNION ALL
+    SELECT 'Автомобильный' AS value, 1 as popularity, 1 as isModern, 'Автомобилестроение' as Comment, 7 as TypeId UNION ALL
+    SELECT 'Автономный' AS value, 1 as popularity, 1 as isModern, 'Техническое' as Comment, 7 as TypeId UNION ALL
     SELECT 'Авторитарный' AS value, 1 as popularity, 1 as isModern, 'Политология/Политические режимы' as Comment, 3 as TypeId UNION ALL
     SELECT 'Авторитетный' AS value, 1 as popularity, 1 as isModern, 'Творчество' as Comment, 7 as TypeId UNION ALL
     SELECT 'Авторский' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
     SELECT 'Агатовый' AS value, 1 as popularity, 1 as isModern, 'Геммология/Минералы' as Comment, 3 as TypeId UNION ALL
-    SELECT 'Агентурный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
-    SELECT 'Агитационный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
+    SELECT 'Агентурный' AS value, 1 as popularity, 1 as isModern, 'Военное дело' as Comment, 7 as TypeId UNION ALL
+    SELECT 'Агитационный' AS value, 1 as popularity, 1 as isModern, 'Политология' as Comment, 3 as TypeId UNION ALL
     SELECT 'Аграрный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
     SELECT 'Агрессивный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
     SELECT 'Адвокатский' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
