@@ -83,7 +83,7 @@ def generate_insert_sql(adjectives, batch_size=500):
         batch = adjectives[i:i+batch_size]
         
         sql = f"""-- Прилагательные (часть {i//batch_size + 1}/{ (total + batch_size - 1)//batch_size })
-INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, DateTimeSaving, Popularity, IsModern, Comment)
+INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, DateTimeSaving, Popularity, IsModern, Comment, TypeId)
 SELECT
     value,
     {TYPE_ID} AS typeId,
@@ -93,13 +93,14 @@ SELECT
     datetime('now', 'localtime') AS DateTimeSaving,
     popularity,
     isModern,
-    Comment
+    Comment,
+    TypeId
 FROM (
 """
         
         union_parts = []
         for word in batch:
-            union_parts.append(f"    SELECT '{word}' AS value, 1 as popularity, 1 as isModern, NULL as Comment")
+            union_parts.append(f"    SELECT '{word}' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId")
         
         sql += " UNION ALL\n".join(union_parts)
         sql += "\n);\n"
