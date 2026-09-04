@@ -91,7 +91,7 @@ FROM (
     SELECT 'Аналоговый' AS value, 1 as popularity, 1 as isModern, 'Техническое' as Comment, 7 as TypeId UNION ALL
     SELECT 'Анатомический' AS value, 1 as popularity, 1 as isModern, 'Медицина' as Comment, 3 as TypeId UNION ALL
     SELECT 'Ангельский' AS value, 1 as popularity, 1 as isModern, 'Православие' as Comment, 7 as TypeId UNION ALL
-    SELECT 'Английский' AS value, 1 as popularity, 1 as isModern, 'Страны' as Comment, 7 as TypeId UNION ALL
+    SELECT 'Английский' AS value, 1 as popularity, 1 as isModern, 'Страны' as Comment, 6 as TypeId UNION ALL
     SELECT 'Англоязычный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
     SELECT 'Анекдотический' AS value, 1 as popularity, 1 as isModern, 'Разговорное' as Comment, 7 as TypeId UNION ALL
     SELECT 'Анилиновый' AS value, 1 as popularity, 1 as isModern, 'Химия/Красители' as Comment, 3 as TypeId UNION ALL
