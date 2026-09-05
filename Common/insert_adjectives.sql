@@ -113,8 +113,8 @@ FROM (
     SELECT 'Антисемитский' AS value, 1 as popularity, 1 as isModern, 'Политология/Идеологии' as Comment, 3 as TypeId UNION ALL
     SELECT 'Антисептический' AS value, 1 as popularity, 1 as isModern, 'Медицина' as Comment, 3 as TypeId UNION ALL
     SELECT 'Антисоветский' AS value, 1 as popularity, 1 as isModern, 'Политология/Идеологии' as Comment, 3 as TypeId UNION ALL
-    SELECT 'Античный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
-    SELECT 'Апельсиновый' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
+    SELECT 'Античный' AS value, 1 as popularity, 1 as isModern, 'История' as Comment, 3 as TypeId UNION ALL
+    SELECT 'Апельсиновый' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 10 as TypeId UNION ALL
     SELECT 'Апокалиптический' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
     SELECT 'Аполитичный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
     SELECT 'Аппаратный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
