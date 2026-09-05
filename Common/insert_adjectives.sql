@@ -4,18 +4,17 @@
 -- Дата генерации: 2026-09-04 18:43:36
 
 -- Прилагательные (часть 1/8)
-INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, DateTimeSaving, Popularity, IsModern, Comment, TypeId)
+INSERT OR IGNORE INTO UltraWords (value, TypeId, partOfSpeechId, isDeclinable, link, DateTimeSaving, Popularity, IsModern, Comment, TypeId)
 SELECT
     value,
-    7 AS typeId,
+    TypeId,
     2 AS partOfSpeechId,
     1 AS isDeclinable,
     'https://codenlp.ru/slovar/spisok-prilagatelnyih-russkogo-yazyika.html' AS link,
     datetime('now', 'localtime') AS DateTimeSaving,
     popularity,
     isModern,
-    Comment,
-    TypeId
+    Comment
 FROM (
     SELECT 'Абхазский' AS value, 0 as popularity, 1 as isModern, 'Страны' as Comment, 6 as TypeId UNION ALL
     SELECT 'Авангардный' AS value, 1 as popularity, 1 as isModern, 'Искусство' as Comment, 7 as TypeId UNION ALL
@@ -514,15 +513,14 @@ FROM (
 INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, DateTimeSaving, Popularity, IsModern, Comment, TypeId)
 SELECT
     value,
-    7 AS typeId,
+    TypeId,
     2 AS partOfSpeechId,
     1 AS isDeclinable,
     'https://codenlp.ru/slovar/spisok-prilagatelnyih-russkogo-yazyika.html' AS link,
     datetime('now', 'localtime') AS DateTimeSaving,
     popularity,
     isModern,
-    Comment,
-    TypeId
+    Comment
 FROM (
     SELECT 'Бомбовый' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL
     SELECT 'Бордовый' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL
@@ -1030,15 +1028,14 @@ FROM (
 INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, DateTimeSaving, Popularity, IsModern, Comment, TypeId)
 SELECT
     value,
-    7 AS typeId,
+    TypeId,
     2 AS partOfSpeechId,
     1 AS isDeclinable,
     'https://codenlp.ru/slovar/spisok-prilagatelnyih-russkogo-yazyika.html' AS link,
     datetime('now', 'localtime') AS DateTimeSaving,
     popularity,
     isModern,
-    Comment,
-    TypeId
+    Comment
 FROM (
     SELECT 'Гипсовый' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL
     SELECT 'Гитарный' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL
@@ -1546,15 +1543,14 @@ FROM (
 INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, DateTimeSaving, Popularity, IsModern, Comment, TypeId)
 SELECT
     value,
-    7 AS typeId,
+    TypeId,
     2 AS partOfSpeechId,
     1 AS isDeclinable,
     'https://codenlp.ru/slovar/spisok-prilagatelnyih-russkogo-yazyika.html' AS link,
     datetime('now', 'localtime') AS DateTimeSaving,
     popularity,
     isModern,
-    Comment,
-    TypeId
+    Comment
 FROM (
     SELECT 'Жженый' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL
     SELECT 'Живейший' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL
@@ -2062,15 +2058,14 @@ FROM (
 INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, DateTimeSaving, Popularity, IsModern, Comment, TypeId)
 SELECT
     value,
-    7 AS typeId,
+    TypeId,
     2 AS partOfSpeechId,
     1 AS isDeclinable,
     'https://codenlp.ru/slovar/spisok-prilagatelnyih-russkogo-yazyika.html' AS link,
     datetime('now', 'localtime') AS DateTimeSaving,
     popularity,
     isModern,
-    Comment,
-    TypeId
+    Comment
 FROM (
     SELECT 'Катастрофический' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL
     SELECT 'Категорический' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL
@@ -2578,15 +2573,14 @@ FROM (
 INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, DateTimeSaving, Popularity, IsModern, Comment, TypeId)
 SELECT
     value,
-    7 AS typeId,
+    TypeId,
     2 AS partOfSpeechId,
     1 AS isDeclinable,
     'https://codenlp.ru/slovar/spisok-prilagatelnyih-russkogo-yazyika.html' AS link,
     datetime('now', 'localtime') AS DateTimeSaving,
     popularity,
     isModern,
-    Comment,
-    TypeId
+    Comment
 FROM (
     SELECT 'Лютый' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL
     SELECT 'Лягушачий' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL
@@ -3094,15 +3088,14 @@ FROM (
 INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, DateTimeSaving, Popularity, IsModern, Comment, TypeId)
 SELECT
     value,
-    7 AS typeId,
+    TypeId,
     2 AS partOfSpeechId,
     1 AS isDeclinable,
     'https://codenlp.ru/slovar/spisok-prilagatelnyih-russkogo-yazyika.html' AS link,
     datetime('now', 'localtime') AS DateTimeSaving,
     popularity,
     isModern,
-    Comment,
-    TypeId
+    Comment
 FROM (
     SELECT 'Негодный' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL
     SELECT 'Негодующий' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL
@@ -3610,15 +3603,14 @@ FROM (
 INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, DateTimeSaving, Popularity, IsModern, Comment, TypeId)
 SELECT
     value,
-    7 AS typeId,
+    TypeId,
     2 AS partOfSpeechId,
     1 AS isDeclinable,
     'https://codenlp.ru/slovar/spisok-prilagatelnyih-russkogo-yazyika.html' AS link,
     datetime('now', 'localtime') AS DateTimeSaving,
     popularity,
     isModern,
-    Comment,
-    TypeId
+    Comment
 FROM (
     SELECT 'Николаевский' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL
     SELECT 'Николо' AS value, 1 as popularity, 1 as isModern, '' as Comment, 7 as TypeId UNION ALL

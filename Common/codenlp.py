@@ -86,15 +86,14 @@ def generate_insert_sql(adjectives, batch_size=500):
 INSERT OR IGNORE INTO UltraWords (value, typeId, partOfSpeechId, isDeclinable, link, DateTimeSaving, Popularity, IsModern, Comment, TypeId)
 SELECT
     value,
-    {TYPE_ID} AS typeId,
+    TypeId,
     {PART_OF_SPEECH_ID} AS partOfSpeechId,
     1 AS isDeclinable,
     '{LINK}' AS link,
     datetime('now', 'localtime') AS DateTimeSaving,
     popularity,
     isModern,
-    Comment,
-    TypeId
+    Comment
 FROM (
 """
         
