@@ -155,8 +155,8 @@ FROM (
     SELECT 'Аскорбиновый' AS value, 1 as popularity, 1 as isModern, 'Медицина/Фармакология' as Comment, 3 as TypeId UNION ALL
     SELECT 'Ассирийский' AS value, 1 as popularity, 1 as isModern, 'История/Древние страны' as Comment, 3 as TypeId UNION ALL
     SELECT 'Ассоциативный' AS value, 1 as popularity, 1 as isModern, 'Творчество' as Comment, 7 as TypeId UNION ALL
-    SELECT 'Астматический' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
-    SELECT 'Астральный' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
+    SELECT 'Астматический' AS value, 1 as popularity, 1 as isModern, 'Медицина/Заболевания/Дыхательные' as Comment, 3 as TypeId UNION ALL
+    SELECT 'Астральный' AS value, 1 as popularity, 1 as isModern, 'Астрал' as Comment, 11 as TypeId UNION ALL
     SELECT 'Астраханский' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
     SELECT 'Астрономический' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
     SELECT 'Асфальтовый' AS value, 1 as popularity, 1 as isModern, NULL as Comment, 7 as TypeId UNION ALL
